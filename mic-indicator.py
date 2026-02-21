@@ -2,18 +2,17 @@
 # -*- coding: utf-8 -*-
 """
 Indicador de micrófono para XFCE - Arte Fénix
-Estados: Gris → Rojo → Verde → Celeste → Gris
-Con banner Arte Fénix, botón de donación y cierre suave (queda en gris)
+Estados: Gris → Rojo → Verde → Celeste
+Con autostart configurable y cierre real
 """
 
 import gi
 gi.require_version('Gtk', '3.0')
 gi.require_version('AppIndicator3', '0.1')
-from gi.repository import Gtk, AppIndicator3, GLib
+from gi.repository import Gtk, AppIndicator3
 import subprocess
 import os
 import signal
-import sys
 import webbrowser
 
 # ── Rutas ────────────────────────────────────────────────────────────────────
@@ -23,11 +22,13 @@ NERD_DICTATION_BIN = f"{NERD_DICTATION_DIR}/nerd-dictation"
 MODEL_DIR          = f"{NERD_DICTATION_DIR}/model"
 ICON_DIR           = "/usr/local/share/mic-indicator"
 PID_FILE           = "/tmp/mic-indicator-dictation.pid"
+AUTOSTART_FILE     = "/etc/xdg/autostart/mic-indicator.desktop"
+AUTOSTART_USER     = os.path.expanduser("~/.config/autostart/mic-indicator.desktop")
 
 # ── URLs ──────────────────────────────────────────────────────────────────────
-URL_GITHUB      = "https://github.com/GrupoArteFenix"
-URL_SPONSORS    = "https://github.com/sponsors/GrupoArteFenix"
-URL_REPO        = "https://github.com/GrupoArteFenix/mic-indicator"
+URL_GITHUB   = "https://github.com/GrupoArteFenix"
+URL_SPONSORS = "https://github.com/sponsors/GrupoArteFenix"
+URL_REPO     = "https://github.com/GrupoArteFenix/mic-indicator"
 
 # ── Estados ───────────────────────────────────────────────────────────────────
 ESTADO_GRIS    = 0
@@ -49,23 +50,19 @@ ICONOS = {
     ESTADO_CELESTE: f"{ICON_DIR}/mic_celeste.png",
 }
 
-# ── Fuente del micrófono USB ──────────────────────────────────────────────────
 MIC_SOURCE = "alsa_input.usb-GeneralPlus_USB_Audio_Device-00.mono-fallback"
 
 # ─────────────────────────────────────────────────────────────────────────────
 
 def mutear_micro():
-    subprocess.run(["pactl", "set-source-mute", MIC_SOURCE, "1"],
-                   capture_output=True)
+    subprocess.run(["pactl", "set-source-mute", MIC_SOURCE, "1"], capture_output=True)
 
 def desmutear_micro():
-    subprocess.run(["pactl", "set-source-mute", MIC_SOURCE, "0"],
-                   capture_output=True)
+    subprocess.run(["pactl", "set-source-mute", MIC_SOURCE, "0"], capture_output=True)
 
 def iniciar_dictado():
     proc = subprocess.Popen(
-        [VENV_PYTHON, NERD_DICTATION_BIN, "begin",
-         f"--vosk-model-dir={MODEL_DIR}"],
+        [VENV_PYTHON, NERD_DICTATION_BIN, "begin", f"--vosk-model-dir={MODEL_DIR}"],
         cwd=NERD_DICTATION_DIR,
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
@@ -74,11 +71,8 @@ def iniciar_dictado():
         f.write(str(proc.pid))
 
 def parar_dictado():
-    subprocess.run(
-        [VENV_PYTHON, NERD_DICTATION_BIN, "end"],
-        cwd=NERD_DICTATION_DIR,
-        capture_output=True,
-    )
+    subprocess.run([VENV_PYTHON, NERD_DICTATION_BIN, "end"],
+                   cwd=NERD_DICTATION_DIR, capture_output=True)
     if os.path.exists(PID_FILE):
         try:
             with open(PID_FILE) as f:
@@ -87,6 +81,33 @@ def parar_dictado():
         except (ProcessLookupError, ValueError):
             pass
         os.remove(PID_FILE)
+
+def autostart_activo():
+    """Comprueba si el autostart está habilitado para el usuario actual."""
+    if os.path.exists(AUTOSTART_USER):
+        with open(AUTOSTART_USER) as f:
+            contenido = f.read()
+        return "X-GNOME-Autostart-enabled=false" not in contenido
+    return os.path.exists(AUTOSTART_FILE)
+
+def toggle_autostart():
+    """Activa o desactiva el autostart del usuario."""
+    os.makedirs(os.path.dirname(AUTOSTART_USER), exist_ok=True)
+    if autostart_activo():
+        # Desactivar
+        with open(AUTOSTART_USER, "w") as f:
+            f.write("""[Desktop Entry]
+Type=Application
+Name=Indicador de Micrófono
+Exec=/usr/local/bin/mic-indicator
+Icon=audio-input-microphone
+Terminal=false
+X-GNOME-Autostart-enabled=false
+""")
+    else:
+        # Activar
+        if os.path.exists(AUTOSTART_USER):
+            os.remove(AUTOSTART_USER)
 
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -113,11 +134,11 @@ class MicIndicator:
             self.menu.remove(child)
 
         # ── Banner Arte Fénix ─────────────────────────────────────────────
-        banner = Gtk.MenuItem(label="🔥 Grupo Arte Fénix")
+        banner = Gtk.MenuItem(label="🔥 Arte Fénix Grupo")
         banner.connect("activate", lambda w: webbrowser.open(URL_GITHUB))
         self.menu.append(banner)
 
-        subtitulo = Gtk.MenuItem(label="    Apps · Libros · Multimedia")
+        subtitulo = Gtk.MenuItem(label="    Apps · Libros · Música")
         subtitulo.set_sensitive(False)
         self.menu.append(subtitulo)
 
@@ -148,7 +169,7 @@ class MicIndicator:
 
         self.menu.append(Gtk.SeparatorMenuItem())
 
-        # ── Donación ──────────────────────────────────────────────────────
+        # ── Donación y GitHub ─────────────────────────────────────────────
         donar = Gtk.MenuItem(label="💛  Apoya este proyecto")
         donar.connect("activate", lambda w: webbrowser.open(URL_SPONSORS))
         self.menu.append(donar)
@@ -159,17 +180,24 @@ class MicIndicator:
 
         self.menu.append(Gtk.SeparatorMenuItem())
 
-        # ── Cerrar suave (queda en gris) ──────────────────────────────────
-        cerrar = Gtk.MenuItem(label="⏸  Desactivar micrófono")
-        cerrar.connect("activate", self._desactivar)
+        # ── Autostart toggle ──────────────────────────────────────────────
+        activo = autostart_activo()
+        autostart_label = "✅  Iniciar con el equipo" if activo else "⬜  Iniciar con el equipo"
+        autostart_item = Gtk.MenuItem(label=autostart_label)
+        autostart_item.connect("activate", self._toggle_autostart)
+        self.menu.append(autostart_item)
+
+        self.menu.append(Gtk.SeparatorMenuItem())
+
+        # ── Cerrar ────────────────────────────────────────────────────────
+        cerrar = Gtk.MenuItem(label="✖  Cerrar indicador")
+        cerrar.connect("activate", self._cerrar)
         self.menu.append(cerrar)
 
         self.menu.show_all()
 
     def _cambiar_estado(self, widget, nuevo_estado):
-        estado_anterior = self.estado
-
-        if estado_anterior == ESTADO_VERDE:
+        if self.estado == ESTADO_VERDE:
             parar_dictado()
 
         if nuevo_estado == ESTADO_GRIS:
@@ -187,21 +215,21 @@ class MicIndicator:
         self.indicator.set_title(f"Micrófono: {NOMBRES[nuevo_estado]}")
         self._construir_menu()
 
-    def _desactivar(self, widget):
-        """Cierre suave: para todo y vuelve a gris, el proceso sigue vivo."""
+    def _toggle_autostart(self, widget):
+        toggle_autostart()
+        self._construir_menu()
+
+    def _cerrar(self, widget):
+        """Cierre real: para todo y sale."""
         if self.estado == ESTADO_VERDE:
             parar_dictado()
         mutear_micro()
-        self.estado = ESTADO_GRIS
-        self.indicator.set_icon_full(ICONOS[ESTADO_GRIS], NOMBRES[ESTADO_GRIS])
-        self.indicator.set_title("Micrófono: Apagado")
-        self._construir_menu()
+        Gtk.main_quit()
 
 
 def main():
-    signal.signal(signal.SIGTERM, lambda *a: None)
-    signal.signal(signal.SIGINT,  lambda *a: None)
-
+    signal.signal(signal.SIGTERM, lambda *a: Gtk.main_quit())
+    signal.signal(signal.SIGINT, lambda *a: Gtk.main_quit())
     app = MicIndicator()
     Gtk.main()
 
