@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="caratula-deb-mic.png" alt="Mic Indicator - Arte Fénix" width="200"/>
+  <img src="caratula-deb-mic.png" alt="Mic Indicator - Arte Fénix" width="120"/>
   <h1>Mic Indicator</h1>
   <p><b>Grupo Arte Fénix</b> · <a href="https://github.com/GrupoArteFenix">github.com/GrupoArteFenix</a></p>
 </div>
@@ -10,27 +10,27 @@
 <!-- ██                ESPAÑOL — AZUL                  ██ -->
 <!-- ████████████████████████████████████████████████████ -->
 
-<h2><span style="color:#1565C0">🔵 Español</span></h2>
+<h2><span style="color:#1E88E5">🔵 Español</span></h2>
 
-<p style="color:#1565C0">
+<p style="color:#1E88E5">
 Indicador de micrófono para Linux con reconocimiento de voz en español.<br>
 Controla tu micrófono desde la bandeja del sistema con 4 estados: Apagado, Standby, Transcribiendo y Solo audio.<br>
 Perfecto para usuarios que llegan de Windows y quieren escribir con la voz sin complicaciones.
 </p>
 
-<h3><span style="color:#1565C0">⬇️ Instalación</span></h3>
+<h3><span style="color:#1E88E5">⬇️ Instalación</span></h3>
 
-<ol style="color:#1565C0">
+<ol style="color:#1E88E5">
 <li>Ve a la sección <b>Releases</b> de esta página y descarga el archivo <code>mic-indicator_1.0.0_all.deb</code></li>
 <li>Haz <b>doble clic</b> sobre el archivo descargado</li>
 <li>Se abrirá el instalador de paquetes. Pulsa <b>"Instalar paquete"</b></li>
-<li>Te pedirá tu contraseña — es la misma que usas cada día para encender o desbloquear el ordenador</li>
+<li>Te pedirá tu contraseña — usa la misma contraseña que para iniciar sesión en el ordenador</li>
 <li>¡Listo! El indicador aparecerá en el menú de aplicaciones y se iniciará automáticamente con el equipo</li>
 </ol>
 
-<h3><span style="color:#1565C0">🎙️ ¿Cómo funciona?</span></h3>
+<h3><span style="color:#1E88E5">🎙️ ¿Cómo funciona?</span></h3>
 
-<p style="color:#1565C0">
+<p style="color:#1E88E5">
 Una vez instalado, verás un icono de micrófono en la barra superior. Haz clic sobre él para cambiar de modo:<br>
 ⚫ <b>Apagado</b> — micrófono silenciado<br>
 🔴 <b>Standby</b> — micrófono en espera<br>
@@ -78,27 +78,27 @@ Once installed, you'll see a microphone icon in the top bar. Click it to switch 
 <!-- ██               中文 — ROJO                      ██ -->
 <!-- ████████████████████████████████████████████████████ -->
 
-<h2><span style="color:#B71C1C">🔴 中文</span></h2>
+<h2><span style="color:#FF6D00">🟠 中文</span></h2>
 
-<p style="color:#B71C1C">
+<p style="color:#FF6D00">
 适用于 Linux 的麦克风指示器，支持西班牙语语音识别。<br>
 通过系统托盘控制您的麦克风，共有 4 种状态：关闭、待机、转录和仅音频。<br>
 非常适合从 Windows 切换到 Linux 的用户，无需复杂操作即可使用语音输入。
 </p>
 
-<h3><span style="color:#B71C1C">⬇️ 安装步骤</span></h3>
+<h3><span style="color:#FF6D00">⬇️ 安装步骤</span></h3>
 
-<ol style="color:#B71C1C">
+<ol style="color:#FF6D00">
 <li>前往本页面的 <b>Releases</b> 部分，下载文件 <code>mic-indicator_1.0.0_all.deb</code></li>
 <li><b>双击</b>下载的文件</li>
 <li>软件包安装程序将会打开，点击 <b>"安装软件包"</b></li>
-<li>系统会要求您输入密码 — 就是您每天开机或解锁电脑时使用的密码</li>
+<li>系统会要求您输入密码 — 就是您每天开机登录电脑时使用的密码</li>
 <li>完成！指示器将出现在应用程序菜单中，并随电脑自动启动</li>
 </ol>
 
-<h3><span style="color:#B71C1C">🎙️ 如何使用？</span></h3>
+<h3><span style="color:#FF6D00">🎙️ 如何使用？</span></h3>
 
-<p style="color:#B71C1C">
+<p style="color:#FF6D00">
 安装完成后，您将在顶部栏看到一个麦克风图标。点击它可切换模式：<br>
 ⚫ <b>关闭</b> — 麦克风静音<br>
 🔴 <b>待机</b> — 麦克风待机<br>
@@ -146,7 +146,7 @@ Windows से Linux पर आए उन उपयोगकर्ताओं �
 <!-- ██               العربية — NARANJA                ██ -->
 <!-- ████████████████████████████████████████████████████ -->
 
-<h2><span style="color:#E65100">🟠 العربية</span></h2>
+<h2><span style="color:#E65100">🔶 العربية</span></h2>
 
 <p style="color:#E65100" dir="rtl">
 مؤشر ميكروفون لنظام Linux مع التعرف على الصوت باللغة الإسبانية.<br>
