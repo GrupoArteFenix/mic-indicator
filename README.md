@@ -6,6 +6,22 @@
 
 ---
 
+## 📸 Capturas de pantalla / Screenshots
+
+<div align="center">
+
+| Apagado | Standby | Transcribiendo | Solo audio |
+|:-------:|:-------:|:--------------:|:----------:|
+| ![Apagado](Captura-icono-apagado.png) | ![Standby](Captura-icono-standby-barra.png) | ![Transcribiendo](Captura-icono-transcribir-barra.png) | ![Solo audio](Captura-icono-solo-audio.png) |
+
+| Menú Apagado | Menú Standby | Menú Transcribiendo | Menú Solo audio |
+|:------------:|:------------:|:-------------------:|:---------------:|
+| ![Menú apagado](captura-menu-apagado.png) | ![Menú standby](captura-menu-standby.png) | ![Menú transcribiendo](captura-menu-transcribiendo.png) | ![Menú solo audio](captura-menu-solo-audio.png) |
+
+</div>
+
+---
+
 <!-- ████████████████████████████████████████████████████ -->
 <!-- ██                ESPAÑOL — AZUL                  ██ -->
 <!-- ████████████████████████████████████████████████████ -->
@@ -21,7 +37,7 @@ Perfecto para usuarios que llegan de Windows y quieren escribir con la voz sin c
 <h3><span style="color:#1E88E5">⬇️ Instalación</span></h3>
 
 <ol style="color:#1E88E5">
-<li>Ve a la sección <b>Releases</b> de esta página y descarga el archivo <code>mic-indicator_1.0.1_all.deb</code></li>
+<li>Ve a la sección <b>Releases</b> de esta página y descarga el archivo <code>mic-indicator_1.0.0_all.deb</code></li>
 <li>Haz <b>doble clic</b> sobre el archivo descargado</li>
 <li>Se abrirá el instalador de paquetes. Pulsa <b>"Instalar paquete"</b></li>
 <li>Te pedirá tu contraseña — usa la misma contraseña que para iniciar sesión en el ordenador</li>
@@ -55,7 +71,7 @@ Perfect for users coming from Windows who want to type with their voice without 
 <h3><span style="color:#2E7D32">⬇️ Installation</span></h3>
 
 <ol style="color:#2E7D32">
-<li>Go to the <b>Releases</b> section of this page and download <code>mic-indicator_1.0.1_all.deb</code></li>
+<li>Go to the <b>Releases</b> section of this page and download <code>mic-indicator_1.0.0_all.deb</code></li>
 <li><b>Double-click</b> the downloaded file</li>
 <li>The package installer will open. Click <b>"Install Package"</b></li>
 <li>It will ask for your password — it's the same one you use every day to log in or unlock your computer</li>
@@ -89,7 +105,7 @@ Once installed, you'll see a microphone icon in the top bar. Click it to switch 
 <h3><span style="color:#FF6D00">⬇️ 安装步骤</span></h3>
 
 <ol style="color:#FF6D00">
-<li>前往本页面的 <b>Releases</b> 部分，下载文件 <code>mic-indicator_1.0.1_all.deb</code></li>
+<li>前往本页面的 <b>Releases</b> 部分，下载文件 <code>mic-indicator_1.0.0_all.deb</code></li>
 <li><b>双击</b>下载的文件</li>
 <li>软件包安装程序将会打开，点击 <b>"安装软件包"</b></li>
 <li>系统会要求您输入密码 — 就是您每天开机登录电脑时使用的密码</li>
@@ -123,7 +139,7 @@ Windows से Linux पर आए उन उपयोगकर्ताओं �
 <h3><span style="color:#4E342E">⬇️ इंस्टॉलेशन</span></h3>
 
 <ol style="color:#4E342E">
-<li>इस पृष्ठ के <b>Releases</b> अनुभाग में जाएं और <code>mic-indicator_1.0.1_all.deb</code> फ़ाइल डाउनलोड करें</li>
+<li>इस पृष्ठ के <b>Releases</b> अनुभाग में जाएं और <code>mic-indicator_1.0.0_all.deb</code> फ़ाइल डाउनलोड करें</li>
 <li>डाउनलोड की गई फ़ाइल पर <b>डबल-क्लिक</b> करें</li>
 <li>पैकेज इंस्टॉलर खुलेगा। <b>"Install Package"</b> पर क्लिक करें</li>
 <li>यह आपसे पासवर्ड मांगेगा — वही पासवर्ड जो आप रोज़ कंप्यूटर चालू करने या अनलॉक करने के लिए उपयोग करते हैं</li>
@@ -157,7 +173,7 @@ Windows से Linux पर आए उन उपयोगकर्ताओं �
 <h3><span style="color:#E65100">⬇️ التثبيت</span></h3>
 
 <ol style="color:#E65100" dir="rtl">
-<li>اذهب إلى قسم <b>Releases</b> في هذه الصفحة وحمّل الملف <code>mic-indicator_1.0.1_all.deb</code></li>
+<li>اذهب إلى قسم <b>Releases</b> في هذه الصفحة وحمّل الملف <code>mic-indicator_1.0.0_all.deb</code></li>
 <li>انقر <b>نقراً مزدوجاً</b> على الملف المحمّل</li>
 <li>سيفتح مثبّت الحزم. انقر على <b>"Install Package"</b></li>
 <li>سيطلب منك كلمة المرور — هي نفس كلمة المرور التي تستخدمها يومياً لتشغيل الحاسوب أو فتح الجلسة</li>
